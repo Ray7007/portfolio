@@ -113,9 +113,22 @@ section{padding:96px 6vw;max-width:1200px;margin:0 auto}
 .kg-badge{position:absolute;top:14px;inset-inline-end:14px;z-index:5;font-family:'Cairo';font-weight:900;font-size:.85rem;
   color:var(--neon);background:rgba(5,10,20,.9);border:1px solid var(--border);padding:5px 16px;border-radius:30px;
   backdrop-filter:blur(6px);box-shadow:0 0 18px rgba(34,211,238,.35);pointer-events:none}
-.kg-badge{position:absolute;top:12px;inset-inline-end:12px;z-index:3;font-family:'Cairo';font-weight:900;font-size:.85rem;
-  color:var(--neon);background:rgba(5,10,20,.85);border:1px solid var(--border);padding:5px 16px;border-radius:30px;
-  backdrop-filter:blur(6px);box-shadow:0 0 18px rgba(34,211,238,.3);pointer-events:none}
+
+/* work life reel */
+.reel{display:flex;gap:12px;overflow-x:auto;padding:8px 6px 18px;scroll-snap-type:x mandatory;justify-content:safe center}
+.reel::-webkit-scrollbar{height:8px}
+.reel::-webkit-scrollbar-track{background:rgba(56,130,246,.08);border-radius:10px}
+.reel::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--neon),var(--violet));border-radius:10px}
+.clip{flex:0 0 108px;height:192px;border-radius:12px;overflow:hidden;position:relative;scroll-snap-align:center;
+  border:1px solid var(--border);background:#0a1226;cursor:pointer;transition:transform .35s,box-shadow .35s}
+.clip:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 14px 34px rgba(34,211,238,.18)}
+.clip video{width:100%;height:100%;object-fit:cover;display:block}
+.clip .cap{position:absolute;bottom:0;left:0;right:0;padding:20px 8px 7px;font-size:.6rem;font-weight:800;color:#fff;line-height:1.5;
+  background:linear-gradient(0deg,rgba(3,6,12,.94),transparent);pointer-events:none}
+.clip .pp{position:absolute;top:7px;inset-inline-end:7px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(5,10,20,.75);border:1px solid var(--border);color:var(--neon);font-size:.55rem;pointer-events:none}
+.role-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.role-chips .chip{font-size:.85rem;padding:7px 17px}
 
 /* certificates */
 .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:28px}
@@ -132,17 +145,6 @@ section{padding:96px 6vw;max-width:1200px;margin:0 auto}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .lightbox img{max-width:100%;max-height:90vh;border-radius:14px;box-shadow:0 0 80px rgba(34,211,238,.25)}
 .lightbox .close{position:absolute;top:24px;left:30px;color:#fff;font-size:2.2rem;cursor:pointer;background:none;border:none}
-
-/* tuwaiq path card */
-.cert-visual{height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;
-  background:radial-gradient(circle at 50% 130%,rgba(139,92,246,.4),transparent 70%),linear-gradient(160deg,#12102e,#060d1d)}
-.cert-visual .big-ico{font-size:3rem;filter:drop-shadow(0 0 18px rgba(139,92,246,.7))}
-.cert-visual .path-stats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.cert-visual .path-stats span{font-size:.74rem;font-weight:700;color:var(--txt);border:1px solid rgba(139,92,246,.4);padding:3px 12px;border-radius:20px;background:rgba(139,92,246,.12)}
-.prog{width:75%;height:8px;background:rgba(56,130,246,.15);border-radius:10px;overflow:hidden;position:relative}
-.prog i{position:absolute;inset-inline-start:0;top:0;bottom:0;width:100%;border-radius:10px;background:linear-gradient(90deg,var(--neon),var(--violet));box-shadow:0 0 14px rgba(139,92,246,.7)}
-.prog-lbl{font-size:.72rem;font-weight:900;color:#4ade80;letter-spacing:1px}
-a.cert{display:block;text-decoration:none;color:inherit}
 
 /* skills */
 .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
@@ -192,6 +194,7 @@ footer b{color:var(--neon)}
     <li><a href="#certs" data-en="Certificates">شهاداتي</a></li>
     <li><a href="#skills" data-en="Skills">مهاراتي</a></li>
     <li><a href="#contact" data-en="Contact">تواصل</a></li>
+    <li><a href="#worklife" data-en="Work Life">مشاركاتي</a></li>
   </ul>
   <div style="display:flex;gap:12px;align-items:center">
     <button class="lang-btn" id="langBtn">EN</button>
@@ -213,8 +216,8 @@ footer b{color:var(--neon)}
     <a href="#contact" class="btn btn-ghost" data-en="📩 Contact Me">📩 تواصل معي</a>
   </div>
   <div class="stats">
-    <div class="stat"><div class="num" data-count="4">0</div><div class="lbl" data-en="Years of Experience">سنوات خبرة</div></div>
-    <div class="stat"><div class="num" data-count="6">0</div><div class="lbl" data-en="Certificates">شهادات</div></div>
+    <div class="stat"><div class="num" data-count="6">0</div><div class="lbl" data-en="Years of Experience">سنوات خبرة</div></div>
+    <div class="stat"><div class="num" data-count="5">0</div><div class="lbl" data-en="Certificates">شهادات</div></div>
     <div class="stat"><div class="num" data-count="2">0</div><div class="lbl" data-en="Live Apps">تطبيقات منشورة</div></div>
     <div class="stat"><div class="num" data-count="3">0</div><div class="lbl" data-en="Languages">لغات</div></div>
   </div>
@@ -229,7 +232,7 @@ footer b{color:var(--neon)}
   </div>
   <div class="about-grid">
     <div class="about-card reveal">
-      <p data-en="I'm <strong>Radwan Nasser Jawhar Hussain</strong> from Riyadh, Saudi Arabia. A cybersecurity diploma student with advanced skills in network security, ethical hacking, and data analysis. I work at <strong>Al-Hilal Saudi Club</strong> side by side with the administration, and alongside the coach I help <strong>train juniors and build champions</strong> as an Assistant Weightlifting Coach since 2022. I'm also a <strong>committed, disciplined weightlifter since 2020</strong>, competing in championships to this day. And I build real web platforms — from club management systems to AI-powered landing pages.">
+      <p data-en="I'm <strong>Radwan Nasser Jawhar Hussain</strong> from Riyadh, Saudi Arabia. A cybersecurity diploma student with advanced skills in network security, ethical hacking, and data analysis. I work at <strong>Al-Hilal Saudi Club</strong> side by side with the administration, and alongside the coach I help <strong>train juniors and build champions</strong> as an Assistant Weightlifting Coach since 2022. I'm also a <strong>committed, disciplined weightlifter since 2020</strong>, competing in championships to this day. I also build real web platforms — from club management systems to AI-powered landing pages.">
       أنا <strong>رضوان ناصر جوهر حسين</strong> من الرياض. طالب دبلوم أمن سيبراني أمتلك مهارات متقدمة في أمن الشبكات والاختراق الأخلاقي وتحليل البيانات. أعمل في <strong>نادي الهلال السعودي</strong> جنباً إلى جنب مع الإداري، وأساند المدرب في <strong>تدريب الصغار وصناعة الأبطال</strong> كمساعد مدرب رفع أثقال منذ 2022. وأنا أيضاً <strong>لاعب رفع أثقال ملتزم ومنضبط منذ 2020</strong> وأشارك في البطولات حتى اليوم. وأبني منصات ويب حقيقية — من أنظمة إدارة الأندية إلى صفحات بمزايا ذكاء اصطناعي.</p>
       <div class="chips">
         <span class="chip" data-en="🇸🇦 Arabic — Native">🇸🇦 العربية — لغة أم</span>
@@ -288,7 +291,7 @@ footer b{color:var(--neon)}
 <section id="athlete">
   <div class="sec-title reveal">
     <div class="kicker">ATHLETE</div>
-    <h2 data-en="Weightlifter — <em>Champion in the Making</em>">لاعب رفع أثقال — <em>وأشارك في البطولات</em></h2>
+    <h2 data-en="Weightlifter — <em>Competing in Championships</em>">لاعب رفع أثقال — <em>أشارك في البطولات</em></h2>
     <p style="color:var(--muted);margin-top:10px;font-weight:600" data-en="Committed &amp; disciplined since 2020 — watch me lift 🎬">ملتزم ومنضبط منذ 2020 — شاهدني أرفع 🎬</p>
   </div>
   <div class="proj-grid">
@@ -394,7 +397,7 @@ footer b{color:var(--neon)}
 <section id="contact">
   <div class="sec-title reveal">
     <div class="kicker">CONTACT</div>
-    <h2 data-en="Let's <em>Work Together</em>">خلنا <em>نشتغل سوا</em></h2>
+    <h2 data-en="<em>Contact Me</em>">تواصل <em>معي</em></h2>
   </div>
   <div class="contact-grid">
     <a class="c-card reveal" href="https://wa.me/966502256131" target="_blank" rel="noopener">
@@ -407,6 +410,30 @@ footer b{color:var(--neon)}
       <div class="ico">📱</div><h4 data-en="Phone">الجوال</h4><span>050 225 6131</span></a>
     <a class="c-card reveal" id="cvBtn2" href="Radwan_CV_Arabic.pdf" download>
       <div class="ico">📄</div><h4 data-en="My CV">سيرتي الذاتية</h4><span data-en="Download PDF ⬇">تحميل PDF ⬇</span></a>
+  </div>
+</section>
+
+<!-- WORK LIFE -->
+<section id="worklife">
+  <div class="sec-title reveal">
+    <div class="kicker">WORK LIFE</div>
+    <h2 data-en="My <em>Professional Engagements</em>">مشاركاتي <em>المهنية</em></h2>
+    <p style="color:var(--muted);margin-top:10px;font-weight:600" data-en="Real moments from the field — hover or tap to play 🎬">لقطات حقيقية من الميدان — مرر أو اضغط للتشغيل 🎬</p>
+  </div>
+  <div class="reel reveal">
+    <div class="clip"><video src="work_store.mp4" poster="work_store.jpg" muted loop playsinline preload="none"></video><span class="pp">▶</span><div class="cap" data-en="🛒 Founded &amp; managing an online store (Shopify)">🛒 تأسيس وإدارة متجر إلكتروني (Shopify)</div></div>
+    <div class="clip"><video src="work_giveaway.mp4" poster="work_giveaway.jpg" muted loop playsinline preload="none"></video><span class="pp">▶</span><div class="cap" data-en="📦 Event logistics &amp; giveaway preparation">📦 تجهيز وتوزيع في الفعاليات</div></div>
+    <div class="clip"><video src="work_event_folk.mp4" poster="work_event_folk.jpg" muted loop playsinline preload="none"></video><span class="pp">▶</span><div class="cap" data-en="🎉 Event organizing">🎉 تنظيم الفعاليات</div></div>
+    <div class="clip"><video src="work_hospitality.mp4" poster="work_hospitality.jpg" muted loop playsinline preload="none"></video><span class="pp">▶</span><div class="cap" data-en="🤝 Reception &amp; hospitality">🤝 الاستقبال والضيافة</div></div>
+    <div class="clip"><video src="work_ramadan.mp4" poster="work_ramadan.jpg" muted loop playsinline preload="none"></video><span class="pp">▶</span><div class="cap" data-en="🌙 Ramadan season events">🌙 فعاليات موسم رمضان</div></div>
+    <div class="clip"><video src="work_trip.mp4" poster="work_trip.jpg" muted loop playsinline preload="none"></video><span class="pp">▶</span><div class="cap" data-en="🚌 Umrah trips coordination">🚌 تنسيق رحلات العمرة</div></div>
+  </div>
+  <div class="role-chips reveal">
+    <span class="chip" data-en="🧾 Invoice review &amp; financial reports">🧾 مراجعة الفواتير والتقارير المالية</span>
+    <span class="chip" data-en="📁 Preparing player files &amp; contracts">📁 تجهيز ملفات وعقود اللاعبين</span>
+    <span class="chip" data-en="🏋️ Leading training teams in championships">🏋️ قيادة فرق التدريب في البطولات</span>
+    <span class="chip" data-en="🕋 Two Ramadan seasons — Umrah offices: trips &amp; hotels coordination">🕋 موسما رمضان — مكاتب العمرة: تنسيق الرحلات والفنادق</span>
+    <span class="chip" data-en="🕌 Hajj season — pilgrims reception &amp; coordination">🕌 موسم الحج — تنسيق واستقبال الحجاج</span>
   </div>
 </section>
 </main>
@@ -439,70 +466,4 @@ addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
   }
   for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
     const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
-    if(d<130){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
-      ctx.strokeStyle=`rgba(59,130,246,${(1-d/130)*.35})`;ctx.lineWidth=.7;ctx.stroke()}
-  }
-  requestAnimationFrame(anim);
-})();
-
-/* ===== typing effect ===== */
-const rolesAR=['متخصص أمن سيبراني 🛡️','مطوّر ويب 💻','محلل بيانات 📊','مساعد مدرب رفع أثقال 🏋️','لاعب رفع أثقال منافس منذ 2020 🥇'];
-const rolesEN=['Cybersecurity Specialist 🛡️','Web Developer 💻','Data Analyst 📊','Assistant Weightlifting Coach 🏋️','Competitive Weightlifter since 2020 🥇'];
-let lang='ar',ri=0,ci=0,del=false;
-const tEl=document.getElementById('typeTxt');
-(function type(){
-  const roles=lang==='ar'?rolesAR:rolesEN,word=roles[ri%roles.length];
-  tEl.textContent=word.slice(0,ci);
-  if(!del&&ci<word.length){ci++;setTimeout(type,70)}
-  else if(!del){del=true;setTimeout(type,1600)}
-  else if(ci>0){ci--;setTimeout(type,35)}
-  else{del=false;ri++;setTimeout(type,350)}
-})();
-
-/* ===== language toggle ===== */
-const langBtn=document.getElementById('langBtn');
-document.querySelectorAll('[data-en]').forEach(el=>el.dataset.ar=el.innerHTML);
-langBtn.onclick=()=>{
-  lang=lang==='ar'?'en':'ar';
-  document.documentElement.lang=lang;
-  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  langBtn.textContent=lang==='ar'?'EN':'عربي';
-  document.querySelectorAll('[data-en]').forEach(el=>{el.innerHTML=lang==='ar'?el.dataset.ar:el.dataset.en});
-  const cvHref=lang==='ar'?'Radwan_CV_Arabic.pdf':'Radwan_CV_English.pdf';
-  document.getElementById('cvBtn').href=cvHref;
-  document.getElementById('cvBtn2').href=cvHref;
-  ci=0;ri=0;del=false;
-};
-
-/* ===== scroll reveal ===== */
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add('show');
-    e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w);
-    io.unobserve(e.target)}
-}),{threshold:.15});
-document.querySelectorAll('.reveal,.skill-card').forEach(el=>io.observe(el));
-
-/* ===== counters ===== */
-const io2=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  const el=e.target,end=+el.dataset.count;let cur=0;
-  const step=()=>{cur+=end/40;if(cur<end){el.textContent=Math.ceil(cur)+'+';requestAnimationFrame(step)}else el.textContent=end+'+'};
-  step();io2.unobserve(el);
-}),{threshold:.6});
-document.querySelectorAll('[data-count]').forEach(el=>io2.observe(el));
-
-/* ===== nav ===== */
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
-const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
-burger.onclick=()=>navLinks.classList.toggle('open');
-navLinks.querySelectorAll('a').forEach(a=>a.onclick=()=>navLinks.classList.remove('open'));
-
-/* ===== lightbox ===== */
-function openLB(src){document.getElementById('lbImg').src=src;document.getElementById('lb').classList.add('open')}
-document.getElementById('yr').textContent=new Date().getFullYear();
-/* v3 */
-</script>
-<script async src="https://www.instagram.com/embed.js"></script>
-</body>
-</html>
+    if(d<130){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j]
