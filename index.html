@@ -466,4 +466,78 @@ addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
   }
   for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
     const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
-    if(d<130){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j]
+    if(d<130){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+      ctx.strokeStyle=`rgba(59,130,246,${(1-d/130)*.35})`;ctx.lineWidth=.7;ctx.stroke()}
+  }
+  requestAnimationFrame(anim);
+})();
+
+/* ===== typing effect ===== */
+const rolesAR=['متخصص أمن سيبراني 🛡️','مطوّر ويب 💻','محلل بيانات 📊','مساعد مدرب رفع أثقال 🏋️','لاعب رفع أثقال منافس منذ 2020 🥇'];
+const rolesEN=['Cybersecurity Specialist 🛡️','Web Developer 💻','Data Analyst 📊','Assistant Weightlifting Coach 🏋️','Competitive Weightlifter since 2020 🥇'];
+let lang='ar',ri=0,ci=0,del=false;
+const tEl=document.getElementById('typeTxt');
+(function type(){
+  const roles=lang==='ar'?rolesAR:rolesEN,word=roles[ri%roles.length];
+  tEl.textContent=word.slice(0,ci);
+  if(!del&&ci<word.length){ci++;setTimeout(type,70)}
+  else if(!del){del=true;setTimeout(type,1600)}
+  else if(ci>0){ci--;setTimeout(type,35)}
+  else{del=false;ri++;setTimeout(type,350)}
+})();
+
+/* ===== language toggle ===== */
+const langBtn=document.getElementById('langBtn');
+document.querySelectorAll('[data-en]').forEach(el=>el.dataset.ar=el.innerHTML);
+langBtn.onclick=()=>{
+  lang=lang==='ar'?'en':'ar';
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  langBtn.textContent=lang==='ar'?'EN':'عربي';
+  document.querySelectorAll('[data-en]').forEach(el=>{el.innerHTML=lang==='ar'?el.dataset.ar:el.dataset.en});
+  const cvHref=lang==='ar'?'Radwan_CV_Arabic.pdf':'Radwan_CV_English.pdf';
+  document.getElementById('cvBtn').href=cvHref;
+  document.getElementById('cvBtn2').href=cvHref;
+  ci=0;ri=0;del=false;
+};
+
+/* ===== scroll reveal ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('show');
+    e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w);
+    io.unobserve(e.target)}
+}),{threshold:.15});
+document.querySelectorAll('.reveal,.skill-card').forEach(el=>io.observe(el));
+
+/* ===== counters ===== */
+const io2=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target,end=+el.dataset.count;let cur=0;
+  const step=()=>{cur+=end/40;if(cur<end){el.textContent=Math.ceil(cur)+'+';requestAnimationFrame(step)}else el.textContent=end+'+'};
+  step();io2.unobserve(el);
+}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>io2.observe(el));
+
+/* ===== nav ===== */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.onclick=()=>navLinks.classList.toggle('open');
+navLinks.querySelectorAll('a').forEach(a=>a.onclick=()=>navLinks.classList.remove('open'));
+
+/* ===== work clips hover play ===== */
+document.querySelectorAll('.clip').forEach(c=>{
+  const v=c.querySelector('video');
+  c.addEventListener('mouseenter',()=>v.play());
+  c.addEventListener('mouseleave',()=>v.pause());
+  c.addEventListener('click',()=>v.paused?v.play():v.pause());
+});
+
+/* ===== lightbox ===== */
+function openLB(src){document.getElementById('lbImg').src=src;document.getElementById('lb').classList.add('open')}
+document.getElementById('yr').textContent=new Date().getFullYear();
+/* v4 */
+</script>
+<script async src="https://www.instagram.com/embed.js"></script>
+</body>
+</html>
